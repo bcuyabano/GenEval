@@ -820,12 +820,12 @@ BLUPsolve <- function(y,X=NULL,FixedEff=NULL,Z=NULL,VarMat=NULL,R=NULL,VarComp=N
     # random effects
     aux <- as.numeric(S%*%Vy_inv%*%subY(y,TRN))
     # reliability of random effects
-    r2aux <- sqrt(diag(S%*%Vy_inv))
+    r2aux <- diag(S%*%Vy_inv)
   } else{
     # random effects
     aux <- as.numeric(S%*%t(Ztmp)%*%Vy_inv%*%subY(y,TRN))
     # reliability of random effects
-    r2aux <- sqrt(diag(S%*%t(Ztmp)%*%Vy_inv%*%Ztmp))
+    r2aux <- diag(S%*%t(Ztmp)%*%Vy_inv%*%Ztmp)
   }
   if(class(VarMat)[1] == "list"){
     tmp <- aux
